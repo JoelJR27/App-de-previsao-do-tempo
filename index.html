@@ -1,13 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-</head>
-<body>
-    
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <main class="container">
+      <form class="container__inputs" id="form">
+        <input
+          type="text"
+          class="input__city"
+          placeholder="Busque por uma cidade..."
+          id="inputCityName"
+        />
+      </form>
+      <h1 class="city__name hidden">Rio de janeiro, BR</h1>
+      <div class="container__temp hidden">
+        <p class="temp">
+          23Cº
+          <span class="temp__description">Nublado</span>
+        </p>
+      </div>
+      <ul class="additional__infos hidden">
+        <li class="additional__infos__item">
+          <span class="item__image"
+            ><img src="./assets/images/heat.png"
+          /></span>
+          <span class="span__info"
+            >Temp. máxima
+            <span>37ºC</span>
+          </span>
+        </li>
+        <li class="additional__infos__item">
+          <span class="item__image"
+            ><img src="./assets/images/danger.png"
+          /></span>
+          <span class="span__info"
+            >Temp. mínima
+            <span>23ºC</span>
+          </span>
+        </li>
+        <li class="additional__infos__item">
+          <span class="item__image"
+            ><img src="./assets/images/humidity.png"
+          /></span>
+          <span class="span__info"
+            >Umidade
+            <span>69%</span>
+          </span>
+        </li>
+        <li class="additional__infos__item">
+          <span class="item__image"
+            ><img src="./assets/images/cloudy-wind.png"
+          /></span>
+          <span class="span__info"
+            >Vento
+            <span>4.32km/h</span>
+          </span>
+        </li>
+        <li class="additional__infos__item">
+          <span class="item__image"
+            ><img src="./assets/images/sunrise.png"
+          /></span>
+          <span class="span__info"
+            >Nascer do sol
+            <span>05:13</span>
+          </span>
+        </li>
+        <li class="additional__infos__item">
+          <span class="item__image"
+            ><img src="./assets/images/sunset.png"
+          /></span>
+          <span class="span__info"
+            >Pôr do sol
+            <span>17:32</span>
+          </span>
+        </li>
+      </ul>
+    </main>
     <script type="text/javascript" src="./main.js"></script>
-</body>
+  </body>
 </html>
