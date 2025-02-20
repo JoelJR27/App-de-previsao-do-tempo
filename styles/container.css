@@ -14,6 +14,8 @@
 .container__inputs{
   width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .input__city {
@@ -32,6 +34,11 @@
   font-family: "Open Sans", serif;
   font-size: 1rem;
   color: #000000;
+}
+
+.city__error{
+  color: red;
+  text-decoration: wavy;
 }
 
 .city__name {

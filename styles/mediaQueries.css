@@ -1,0 +1,92 @@
+@media screen and (max-width: 1210px) {
+  .input__city::placeholder {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .input__city::placeholder {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 60vw;
+  }
+
+  .input__city::placeholder {
+    font-size: 12px;
+  }
+
+  .city__name {
+    font-size: 20px;
+  }
+
+  .container__temp {
+    align-items: center;
+    margin-bottom: 1em;
+  }
+
+  .additional__infos {
+    gap: 0.3em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    max-width: 70vw;
+  }
+
+  .input__city::placeholder {
+    font-size: 12px;
+  }
+
+  .city__name {
+    font-size: 20px;
+  }
+
+  .container__temp {
+    font-size: 14px;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+
+  .additional__infos {
+    gap: 0.5em;
+  }
+
+  .span__info {
+    font-size: 14px;
+  }
+
+  .span__info span {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    max-width: 75vw;
+  }
+
+  .container__temp {
+    font-size: 14px;
+    place-content: center;
+    padding: 1em;
+    gap: 1em;
+    margin-bottom: 1em;
+  }
+
+  .additional__infos {
+    gap: 0.3em;
+  }
+
+  .span__info {
+    font-size: 12px;
+  }
+
+  .span__info span {
+    font-size: 10px;
+  }
+}
