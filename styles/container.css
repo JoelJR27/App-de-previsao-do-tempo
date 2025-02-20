@@ -39,6 +39,8 @@
 .city__error{
   color: red;
   text-decoration: wavy;
+  font-size: 12px;
+  text-align: center;
 }
 
 .city__name {

@@ -11,12 +11,14 @@ async function getWeatherData(city) {
   try {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=pt_br&appid=${apiKey}`;
     const res = await fetch(apiUrl).then((res) => res.json());
-    if (typedCity.value == "") {
+    if (typedCity.value.trim() == "") {
       paragraphError.textContent = `Por favor digite o nome de uma cidade!`;
       paragraphError.classList.remove("hidden");
+      typedCity.value = "";
     } else if (res.cod != 200) {
       paragraphError.textContent = `A cidade não foi encontrada!`;
       paragraphError.classList.remove("hidden");
+      typedCity.value = "";
     } else {
       paragraphError.classList.add("hidden");
     }
@@ -35,7 +37,7 @@ function setWeatherIcons(id) {
 }
 
 async function showWeatherData() {
-  const data = await getWeatherData(typedCity.value);
+  const data = await getWeatherData(typedCity.value.trim());
   setWeatherIcons(data.weather[0].icon);
   const temp = document.querySelector(".temp");
   const tempDescription = document.querySelector(".temp__description");
