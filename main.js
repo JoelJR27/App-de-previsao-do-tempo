@@ -20,13 +20,14 @@ async function getWeatherData(city) {
   }
 }
 
-async function getWeatherIcons(id) {
-  const data = await getWeatherData(typedCity.value);
+function setWeatherIcons(id) {
+  const iconImage = document.querySelector('.descriptionImage');
+  iconImage.setAttribute('src', `https://openweathermap.org/img/wn/${id}@2x.png`)
 }
 
 async function showWeatherData() {
   const data = await getWeatherData(typedCity.value);
-  // const weatherIcon = getWeatherIcons(weather.icon);
+  setWeatherIcons(data.weather[0].icon)
   const temp = document.querySelector(".temp");
   const tempDescription = document.querySelector(".temp__description");
   const tempDescriptionText = data.weather[0].description;

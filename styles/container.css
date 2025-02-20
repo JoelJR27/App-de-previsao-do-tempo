@@ -38,6 +38,16 @@
   color: #12474d;
 }
 
+.container__temp{
+  background-color: #1E90FF;
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  width: 100%;
+  border-radius: 1em;
+  color: #fff;
+}
+
 .additional__infos {
   display: grid;
   list-style-type: none;
