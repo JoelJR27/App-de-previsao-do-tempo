@@ -22,15 +22,16 @@
           type="text"
           class="input__city"
           placeholder="Busque por uma cidade..."
-          id="inputCityName"
+          id="typedCityInput"
         />
       </form>
       <h1 class="city__name hidden">Rio de janeiro, BR</h1>
       <div class="container__temp hidden">
-        <p class="temp">
-          23Cº
+        <img src="" class="descriptionImage">
+        <div class="temp__temp-desc">
+          <p class="temp">23Cº</p>
           <span class="temp__description">Nublado</span>
-        </p>
+        </div>
       </div>
       <ul class="additional__infos hidden">
         <li class="additional__infos__item">
@@ -39,7 +40,7 @@
           /></span>
           <span class="span__info"
             >Temp. máxima
-            <span>37ºC</span>
+            <span class="tempMax">37ºC</span>
           </span>
         </li>
         <li class="additional__infos__item">
@@ -48,7 +49,7 @@
           /></span>
           <span class="span__info"
             >Temp. mínima
-            <span>23ºC</span>
+            <span class="tempMin">23ºC</span>
           </span>
         </li>
         <li class="additional__infos__item">
@@ -57,7 +58,7 @@
           /></span>
           <span class="span__info"
             >Umidade
-            <span>69%</span>
+            <span class="humidity">69%</span>
           </span>
         </li>
         <li class="additional__infos__item">
@@ -66,16 +67,16 @@
           /></span>
           <span class="span__info"
             >Vento
-            <span>4.32km/h</span>
+            <span class="wind">4.32km/h</span>
           </span>
         </li>
-        <li class="additional__infos__item">
+        <!-- <li class="additional__infos__item">
           <span class="item__image"
             ><img src="./assets/images/sunrise.png"
           /></span>
           <span class="span__info"
             >Nascer do sol
-            <span>05:13</span>
+            <span class="sunrise">05:13</span>
           </span>
         </li>
         <li class="additional__infos__item">
@@ -84,11 +85,11 @@
           /></span>
           <span class="span__info"
             >Pôr do sol
-            <span>17:32</span>
+            <span class="sunset">17:32</span>
           </span>
-        </li>
+        </li> -->
       </ul>
     </main>
-    <script type="text/javascript" src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
