@@ -36,20 +36,25 @@ function setWeatherIcons(id) {
   );
 }
 
+function getDocumentElement(selector){
+  return document.querySelector(selector)
+}
+
+
+
 async function showWeatherData() {
   const data = await getWeatherData(typedCity.value.trim());
   setWeatherIcons(data.weather[0].icon);
-  const temp = document.querySelector(".temp");
-  const tempDescription = document.querySelector(".temp__description");
+  const temp = getDocumentElement(".temp");
+  const tempDescription = getDocumentElement(".temp__description");
   const tempDescriptionText = data.weather[0].description;
-  const tempMax = document.querySelector(".tempMax");
-  const tempMin = document.querySelector(".tempMin");
-  const humidity = document.querySelector(".humidity");
-  const wind = document.querySelector(".wind");
-  cityName.classList.remove("hidden");
+  const tempMax = getDocumentElement(".tempMax");
+  const tempMin = getDocumentElement(".tempMin");
+  const humidity = getDocumentElement(".humidity");
+  const wind = getDocumentElement(".wind");
   cityName.textContent = `${data.name}, ${data.sys.country}`;
-  containerTemp.classList.remove("hidden");
   temp.textContent = `${Math.round(data.main.temp)}ºC`;
+  showHiddenElements(cityName, containerTemp);
   tempDescription.textContent = `${tempDescriptionText[0].toUpperCase()}${tempDescriptionText.slice(
     1
   )}`;
@@ -58,7 +63,21 @@ async function showWeatherData() {
   tempMin.textContent = `${Math.round(data.main.temp_min)}ºC`;
   humidity.textContent = `${data.main.humidity}%`;
   wind.textContent = `${data.wind.speed}km/h`;
-  typedCity.value = "";
+  resetValue(typedCity);
+}
+
+function resetValue(element) {
+  element.value = "";
+}
+
+function showHiddenElements(...element) {
+  element.forEach((elem) => {
+    elem.classList.remove("hidden");
+  });
+}
+
+function toggleClass(className, ...element) {
+  element.forEach((e) => e.classList.toggle(className));
 }
 
 form.addEventListener("submit", (e) => {
@@ -69,8 +88,6 @@ form.addEventListener("submit", (e) => {
 body.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target == body) {
-    cityName.classList.toggle("hidden");
-    containerTemp.classList.toggle("hidden");
-    ulAdditionalInfos.classList.toggle("hidden");
+    toggleClass("hidden", cityName, containerTemp, ulAdditionalInfos);
   }
 });
