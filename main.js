@@ -86,7 +86,6 @@ form.addEventListener("submit", (e) => {
 });
 
 body.addEventListener("click", (e) => {
-  e.preventDefault();
   if (e.target == body) {
     toggleClass("hidden", cityName, containerTemp, ulAdditionalInfos);
   }

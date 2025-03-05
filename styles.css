@@ -1,6 +1,7 @@
 @import url("./styles/skyBackground.css");
 @import url("styles/container.css");
 @import url("./styles/mediaQueries.css");
+@import url("./styles/footer.css");
 :root {
   --box-shadow: 21px 18px 36px -21px rgba(0, 0, 0, 0.75);
 }
@@ -12,6 +13,7 @@ body {
   height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-family: "Krona One", serif;
 }
 

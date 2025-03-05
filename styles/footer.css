@@ -1,0 +1,27 @@
+.footer{
+    background-color: rgba(251, 251, 251, 0.1);
+    position: fixed;
+    top: 91%;
+    width: 100%;
+}
+
+.links__list{
+    display: flex;
+    justify-content: center;
+    gap: 6em;
+    list-style-type: none;
+}
+
+.links__list__item a{ 
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    text-decoration: none;
+    color: #efefef;
+    text-shadow: 1px 1px 1px  #000;
+    font-size: 24px;
+}
+
+.links__list__item a h3{
+    font-size: 1rem;
+}
