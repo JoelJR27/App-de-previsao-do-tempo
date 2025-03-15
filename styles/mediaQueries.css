@@ -65,21 +65,31 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 420px) {
   .container {
-    max-width: 75vw;
+    max-width: 90vw;
   }
 
   .container__temp {
-    font-size: 14px;
+    width: 90%;
+    font-size: 16px;
     place-content: center;
     padding: 1em;
-    gap: 1em;
+    gap: 0.5em;
     margin-bottom: 1em;
+    align-self: center;
   }
 
   .additional__infos {
-    gap: 0.3em;
+    grid-template: 1fr / 1fr;
+  }
+
+  .additional__infos__item {
+    padding: 0.5em;
+  }
+
+  .additional__infos {
+    gap: 0.9em;
   }
 
   .span__info {
@@ -87,6 +97,18 @@
   }
 
   .span__info span {
-    font-size: 10px;
+    font-size: 16px;
+  }
+
+  .links__list {
+    gap: 2em;
+  }
+  .links__list__item a {
+    gap: 0.5em;
+    font-size: 16px;
+  }
+
+  .links__list__item a h3 {
+    font-size: 12px;
   }
 }

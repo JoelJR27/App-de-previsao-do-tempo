@@ -1,7 +1,7 @@
 @import url("./styles/skyBackground.css");
 @import url("styles/container.css");
-@import url("./styles/mediaQueries.css");
 @import url("./styles/footer.css");
+@import url("./styles/mediaQueries.css");
 :root {
   --box-shadow: 21px 18px 36px -21px rgba(0, 0, 0, 0.75);
 }
