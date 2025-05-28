@@ -31,7 +31,7 @@
 - Aplicação de estilos CSS com base em ações do usuário
 - Exibição dinâmica ao usuário de dados recebidos da [OpenWeather API](https://openweathermap.org/api)
 
-### Você pode conferir o [aqui](https://joeljr27.github.io/CloudVision/)
+### Você pode conferir o projeto [aqui](https://joeljr27.github.io/CloudVision/)
 
 ---
 
@@ -52,3 +52,5 @@
 - DOM manipulation
 - Applied CSS styles based on user actions
 - Displaying data received from the [OpenWeather API](https://openweathermap.org/api) for the users
+
+### You can access the project [here](https://joeljr27.github.io/CloudVision/)
