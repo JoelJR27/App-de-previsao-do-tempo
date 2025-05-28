@@ -1,31 +1,24 @@
 const apiKey = "cdf1bd73a062caed520049b6103ed3af";
-const form = document.querySelector(".container__inputs");
-const typedCity = document.getElementById("typedCityInput");
-const paragraphError = document.querySelector(".city__error");
-const cityName = document.querySelector(".city__name");
-const containerTemp = document.querySelector(".container__temp");
-const ulAdditionalInfos = document.querySelector(".additional__infos");
-const body = document.querySelector("body");
+const form = getDocumentElement("#form");
+const cityInput = getDocumentElement("#typedCityInput");
+const paragraphError = getDocumentElement(".city__error");
+const cityName = getDocumentElement(".city__name");
+const containerTemp = getDocumentElement(".container__temp");
+const ulAdditionalInfos = getDocumentElement(".additional__infos");
 
 async function getWeatherData(city) {
-  try {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=pt_br&appid=${apiKey}`;
-    const res = await fetch(apiUrl).then((res) => res.json());
-    if (typedCity.value.trim() == "") {
-      paragraphError.textContent = `Por favor digite o nome de uma cidade!`;
-      paragraphError.classList.remove("hidden");
-      typedCity.value = "";
-    } else if (res.cod != 200) {
-      paragraphError.textContent = `A cidade não foi encontrada!`;
-      paragraphError.classList.remove("hidden");
-      typedCity.value = "";
-    } else {
-      paragraphError.classList.add("hidden");
-    }
-    return res;
-  } catch (error) {
-    console.error(`Foi obtido o seguinte erro: ${error}`);
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=pt_br&appid=${apiKey}`;
+  const typedCityValue = cityInput.value.trim();
+  if (!typedCityValue) return;
+  const response = await fetch(apiUrl);
+  if (!response.ok) {
+    setTextContent(paragraphError, "Cidade não encontrada!");
+    paragraphError.classList.remove("hidden");
+    resetValue(cityInput);
+    return;
   }
+  paragraphError.classList.add("hidden");
+  return await response.json();
 }
 
 function setWeatherIcons(id) {
@@ -36,34 +29,46 @@ function setWeatherIcons(id) {
   );
 }
 
-function getDocumentElement(selector){
-  return document.querySelector(selector)
+function getDocumentElement(selector) {
+  return document.querySelector(selector);
 }
 
-
+function setTextContent(element, text) {
+  element.textContent = text;
+}
 
 async function showWeatherData() {
-  const data = await getWeatherData(typedCity.value.trim());
-  setWeatherIcons(data.weather[0].icon);
-  const temp = getDocumentElement(".temp");
-  const tempDescription = getDocumentElement(".temp__description");
-  const tempDescriptionText = data.weather[0].description;
-  const tempMax = getDocumentElement(".tempMax");
-  const tempMin = getDocumentElement(".tempMin");
-  const humidity = getDocumentElement(".humidity");
-  const wind = getDocumentElement(".wind");
+  const typedCityValue = cityInput.value.trim();
+  if (!typedCityValue) return;
+  const data = await getWeatherData(typedCityValue);
+  const weather = data.weather[0];
+  const sunrise = new Date(data.sys.sunrise * 1000);
+  const sunset = new Date(data.sys.sunset * 1000);
+  setWeatherIcons(weather.icon);
   cityName.textContent = `${data.name}, ${data.sys.country}`;
-  temp.textContent = `${Math.round(data.main.temp)}ºC`;
   showHiddenElements(cityName, containerTemp);
-  tempDescription.textContent = `${tempDescriptionText[0].toUpperCase()}${tempDescriptionText.slice(
-    1
-  )}`;
+  setTextContent(
+    getDocumentElement(".temp"),
+    `${Math.round(data.main.temp)}ºC`
+  );
+  setTextContent(getDocumentElement(".temp__description"), weather.description);
+  setTextContent(
+    getDocumentElement(".tempMax"),
+    `${Math.round(data.main.temp_max)}ºC`
+  );
+  setTextContent(
+    getDocumentElement(".tempMin"),
+    `${Math.round(data.main.temp_min)}ºC`
+  );
+  setTextContent(getDocumentElement(".humidity"), `${data.main.humidity}%`);
+  setTextContent(
+    getDocumentElement(".wind"),
+    `${Math.round(data.wind.speed)}km/h`
+  );
+  setTextContent(getDocumentElement(".sunrise"), sunrise.toLocaleTimeString());
+  setTextContent(getDocumentElement(".sunset"), sunset.toLocaleTimeString());
   ulAdditionalInfos.classList.remove("hidden");
-  tempMax.textContent = `${Math.round(data.main.temp_max)}ºC`;
-  tempMin.textContent = `${Math.round(data.main.temp_min)}ºC`;
-  humidity.textContent = `${data.main.humidity}%`;
-  wind.textContent = `${data.wind.speed}km/h`;
-  resetValue(typedCity);
+  resetValue(cityInput);
 }
 
 function resetValue(element) {
@@ -85,8 +90,8 @@ form.addEventListener("submit", (e) => {
   showWeatherData();
 });
 
-body.addEventListener("click", (e) => {
-  if (e.target == body) {
+document.body.addEventListener("click", (e) => {
+  if (e.target == document.body) {
     toggleClass("hidden", cityName, containerTemp, ulAdditionalInfos);
   }
 });
